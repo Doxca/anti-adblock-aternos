@@ -8,8 +8,8 @@
 // @inject-into page
 // @run-at      document-start
 // @namespace       https://github.com/Doxca/anti-adblock-aternos
-// @updateURL       https://github.com/Doxca/anti-adblock-aternos/aternos_antiadblock.js
-// @downloadURL     
+// @updateURL       https://raw.githubusercontent.com/Doxca/anti-adblock-aternos/main/aternos_antiadblock.js
+// @downloadURL     https://raw.githubusercontent.com/Doxca/anti-adblock-aternos/main/aternos_antiadblock.js
 // @supportURL      https://github.com/Doxca/anti-adblock-aternos/issues
 // @meta        Thank you aspen, i juste modifyed a little thing but it's a modification so .. idk credit to you thx
 // ==/UserScript==
