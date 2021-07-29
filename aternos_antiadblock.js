@@ -1,25 +1,23 @@
 // ==UserScript==
-// @name         anti adblock aternos
-// @version      0.1
-// @description  make you happy cause no more ads on aternos.org
-// @author       Enderty
-// @match        https://aternos.org/options/*
+// @name        Aternos anti-anti adblock
+// @description Kills Aternos' annoying full-page + timeout anti-adblock.
+// @version     1.0.3
+// @author      Doxca
+// @match       *://aternos.org/*
+// @grant       none
+// @inject-into page
+// @run-at      document-start
+// @namespace       https://github.com/Doxca/anti-adblock-aternos
+// @updateURL       https://github.com/Doxca/anti-adblock-aternos/aternos_antiadblock.js
+// @downloadURL     
+// @supportURL      https://github.com/Doxca/anti-adblock-aternos/issues
+// @meta        Thank you aspen, i juste modifyed a little thing but it's a modification so .. idk credit to you thx
 // ==/UserScript==
 
-function a(){
-clearInterval(sf);
-function s(elm){document.querySelector(elm).style.setProperty("display","");document.querySelector(elm).style.setProperty("height","");}
-document.querySelectorAll("div").forEach(i=>{if(i && i.children[0] && i.children[0].innerText=="Options"){window.divapp=i;}});
-if(window.divapp){window.divapp.style='';document.getElementsByClassName("page-content")[0].innerHTML=window.divapp.outerHTML;window.divapp.remove()}
-s(".body");
-s(".header");
-document.querySelectorAll("span").forEach(i=>{
-if(i.children[0] && i.children[0].outerHTML.startsWith("<div>")){i.style.setProperty("display","none");}
-});
-}
+const regex = /function ([A-Za-z]+)\(\)\s+\{\s+([A-Za-z]+)\s+\=\s*true\s*;\s*([A-Za-z]+)\(\)\s*;\s*}\s*let\s*[a-zA-Z],\s*[a-zA-Z]\s*;/;
 
-const sf=setInterval(()=>{
-document.querySelectorAll("span").forEach(i=>{
-if(i.children[0] && i.children[0].outerHTML.startsWith("<div>")){a();}
-});
-},1);
+(function () {
+	"use strict";
+const unsafeWindow=window;/*that's the modification...yes x) */let old_atob=unsafeWindow.atob;unsafeWindow.atob=function(i){let out=old_atob(i);let find_function=regex.exec(out);if(find_function){let function_name=find_function[1];out=out.replace(function_name,"Function.prototype")}return out.replace(".addClass('fa-sad-tear');",".addClass('fa-sad-tear'); return true;")};
+})();
+//big credit to aspen
