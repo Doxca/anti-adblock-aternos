@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Aternos anti-anti adblock
 // @description Kills Aternos' annoying full-page + timeout anti-adblock.
-// @version     1.0.4
+// @version     1.0.5
 // @author      Doxca
 // @match       *://aternos.org/*
 // @grant       none
